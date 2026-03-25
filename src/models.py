@@ -44,7 +44,7 @@ class UserModel:
         count = cursor.rowcount
         cursor.close()
         conn.close()
-        return count > 0
+        return int(count) > 0
 
     @staticmethod
     def delete_user(user_id):
