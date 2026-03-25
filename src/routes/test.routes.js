@@ -26,4 +26,22 @@ router.get('/db-test', async (req, res) => {
   }
 });
 
+router.get('/tasks', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM tasks ORDER BY id ASC');
+
+    res.json({
+      message: 'Lista de tareas',
+      data: result.rows
+    });
+  } catch (error) {
+    console.error('Error al obtener tareas:', error.message);
+
+    res.status(500).json({
+      message: 'Error al obtener tareas',
+      error: error.message
+    });
+  }
+});
+
 module.exports = router;
