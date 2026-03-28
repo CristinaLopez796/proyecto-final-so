@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   mysql:
     image: mysql:8.0
@@ -40,7 +38,7 @@ services:
     # No montamos el código en producción
     # Volúmenes solo si hay algo realmente necesario
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:5000/health"]
       interval: 10s
       timeout: 5s
       retries: 5

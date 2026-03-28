@@ -10,6 +10,11 @@ app.register_blueprint(bp)
 def home():
     return render_template("home.html")
 
+# ✅ HEALTH CHECK ENDPOINT
+@app.route("/health")
+def health():
+    return {"status": "healthy"}, 200
+
 # ------ VISTA: LISTA DE USUARIOS ------
 @app.route("/web/users")
 def web_list():
