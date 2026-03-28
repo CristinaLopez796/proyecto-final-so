@@ -1,6 +1,7 @@
-# Proyecto Final - Flask CRUD con MySQL
+# Proyecto Final / Grupo #4 - Flask CRUD con MySQL
 
-Este proyecto es una aplicación web CRUD desarrollada en Flask, con persistencia en MySQL y empaquetada con Docker. Incluye API REST y vistas web para gestionar usuarios, plus deployment preparado para Render.
+Este proyecto es una aplicación web CRUD desarrollada en Flask, con persistencia en MySQL y empaquetada con Docker. Incluye API REST y vistas web para gestionar usuarios, plus deployment preparado para Render, Grupo #4 - Sistemas Operativos Sec.63 - Ceutec Q1 2026.
+
 
 ## 🧩 Arquitectura del proyecto
 
@@ -16,6 +17,7 @@ Este proyecto es una aplicación web CRUD desarrollada en Flask, con persistenci
 - `requirements.txt` - dependencias de Python.
 - `tests/` - pruebas unitarias de modelo y rutas.
 
+
 ## 📦 Dependencias
 
 - Python 3.10
@@ -25,6 +27,7 @@ Este proyecto es una aplicación web CRUD desarrollada en Flask, con persistenci
 - Gunicorn
 - Jinja2
 - pytest
+
 
 ## 🪙 Variables de entorno (`.env` local)
 
@@ -37,62 +40,75 @@ MYSQL_PASSWORD=flaskpass
 
 En ambientes de deploy (Render, etc.) deben existir con los valores del servicio.
 
+
 ## 🚀 Uso local
 
 1. Clonar y entrar al directorio:
    ```bash
-   git clone https://github.com/CristinaLopez796/proyecto-final-so.git
-   cd proyecto-final-so
+
+git clone https://github.com/CristinaLopez796/proyecto-final-so.git
+cd proyecto-final-so
    ```
 2. Crear y activar entorno virtual:
    ```bash
-   python -m venv venv
-   venv\Scripts\activate  # Windows
-   source venv/bin/activate  # macOS/Linux
+python -m venv venv
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # macOS/Linux
    ```
+
 3. Instalar dependencias:
    ```bash
-   pip install -r requirements.txt
+
+pip install -r requirements.txt
    ```
 4. Crear `.env` con valores de ejemplo (como arriba).
 5. Ejecutar local:
    ```bash
-   python app.py
+python app.py
    ```
+
 6. Abrir:
    - `http://localhost:5000` (Home)
    - `http://localhost:5000/web/users` (CRUD de usuarios)
 
 7. Healthcheck:
    ```bash
-   curl -f http://localhost:5000/health
+
+curl -f http://localhost:5000/health
    ```
+
 
 ## 🐳 Docker / Docker Compose (recomendado)
 
 1. Usar Docker Desktop y asegurarse de que esté en ejecución.
 2. Ejecutar en la raíz del proyecto:
    ```bash
-   docker-compose up -d --build
+docker-compose up -d --build
    ```
-3. Verificar status:
+
+1. Verificar status:
    ```bash
-   docker-compose ps
+
+docker-compose ps
    ```
 4. Logs de Flask:
    ```bash
-   docker-compose logs flask
+docker-compose logs flask
    ```
+
 5. Bajar contenedores:
    ```bash
-   docker-compose down
+
+docker-compose down
    ```
+
 
 ## 🧪 Testing
 
 ```bash
 pytest -q
 ```
+
 
 ## 🔌 Endpoints API REST
 
@@ -101,6 +117,7 @@ pytest -q
 - `GET /users/<id>` -> obtener usuario por id.
 - `PUT /users/<id>` -> actualizar usuario (body JSON: `name`, `email`).
 - `DELETE /users/<id>` -> eliminar usuario.
+
 
 ## 🌐 Endpoints web
 
@@ -112,11 +129,13 @@ pytest -q
 - `POST /web/users/update/<id>` - actualizar y redirigir.
 - `GET /web/users/delete/<id>` - eliminar.
 
+
 ## 💾 Healthcheck
 
 - `GET /health` -> `{"status": "healthy"}`
 - Container healthcheck en `docker-compose.yml` usa:
   - `curl -f http://127.0.0.1:5000/health`.
+
 
 ## 🛠️ Problemas resueltos (cambios aplicados)
 
@@ -125,6 +144,7 @@ pytest -q
 3. Se añadió endpoint `/health` en `app.py` y se cambió healthcheck a `curl` (127.0.0.1).
 4. Se instaló correctamente Flask y dependencias (`pip install -r requirements.txt`).
 5. Se ajustó la ejecución de Gunicorn para producción dentro de container.
+
 
 ## ☁️ Deploy en Render (recomendado)
 
@@ -135,15 +155,18 @@ pytest -q
 4. Verificar `curl https://<app>.onrender.com/health`.
 5. Si hay 500, consultar logs de runtime en Render.
 
+
 ## 🧾 Consideraciones para Vercel
 
 - Vercel no incluye MySQL nativo (debe apuntar a DB externa).
 - Se recomienda Render, Railway, Heroku, o DB cloud externa para producción estable.
 
+
 ## 📌 Notas de estilo
 
 - Buenas prácticas: usar variables de entorno, no credenciales hardcodeadas.
 - Si se hace PR, incluir pruebas con pytest y detalle de pasos para reproducir.
+
 
 ## 🧑‍💻 Contribución
 
@@ -152,7 +175,8 @@ pytest -q
 3. Añadir tests y confirmar `pytest`.
 4. Abrir PR y describir cambios.
 
+
 ## 📞 Contacto
 
-- Autor original: desarrollador del proyecto.
+- Creador original del Repositorio: [Cristina Lopez](https://github.com/CristinaLopez796)
 - En caso de dudas, enviar captura de errores de producción (logs) y URL del servicio.
