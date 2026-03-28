@@ -1,0 +1,29 @@
+{
+  "name": "proyecto-final-so",
+  "version": "1.0.0",
+  "description": "Proyecto final de clase de Sistemas Operativos",
+  "main": "index.js",
+ "scripts": {
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristinaLopez796/proyecto-final-so.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristinaLopez796/proyecto-final-so/issues"
+  },
+  "homepage": "https://github.com/CristinaLopez796/proyecto-final-so#readme",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
