@@ -31,24 +31,28 @@
             <form method="POST">
 
                 <div class="mb-3">
-                    <label class="form-label">Nombre</label>
+                    <label for="name" class="form-label">Nombre</label>
                     <input 
+                        id="name"
                         type="text" 
                         class="form-control" 
                         name="name" 
                         required
-                        value="{{ usuario.name if usuario else '' }}"
+                        placeholder="Ingresa el nombre"
+                        value="{% if usuario %}{{ usuario.name }}{% else %}{{ request.form.get('name', '') }}{% endif %}"
                     >
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label for="email" class="form-label">Email</label>
                     <input 
+                        id="email"
                         type="email" 
                         class="form-control" 
                         name="email" 
                         required
-                        value="{{ usuario.email if usuario else '' }}"
+                        placeholder="Ingresa el email"
+                        value="{% if usuario %}{{ usuario.email }}{% else %}{{ request.form.get('email', '') }}{% endif %}"
                     >
                 </div>
 

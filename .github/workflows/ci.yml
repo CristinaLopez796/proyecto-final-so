@@ -63,6 +63,10 @@ jobs:
             email VARCHAR(255)
           );"
 
+      - name: Ensure clean test data
+        run: |
+          mysql -h 127.0.0.1 -u root -proot -e "USE flaskdb; DELETE FROM users;"
+
       - name: Run Tests
         run: pytest -v --disable-warnings
 

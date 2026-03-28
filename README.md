@@ -161,6 +161,34 @@ pytest -q
 - Vercel no incluye MySQL nativo (debe apuntar a DB externa).
 - Se recomienda Render, Railway, Heroku, o DB cloud externa para producción estable.
 
+## 🧪 QA final checklist (recomendado antes de entregar)
+
+1. Arrancar contenedores:
+   ```bash
+docker-compose up -d --build
+   ```
+2. Limpiar datos de test si hace falta:
+   ```bash
+docker-compose exec --user root mysql mysql -h mysql -uflaskuser -pflaskpass flaskdb -e "DELETE FROM users;"
+   ```
+3. Ejecutar pruebas:
+   ```bash
+python -m pytest -q
+   ```
+   - Debe responder `10 passed`.
+4. Probar health endpoint:
+   ```bash
+curl -f http://localhost:5000/health
+   ```
+5. Verificar UI:
+   - `http://localhost:5000/web/users`
+   - `http://localhost:5000/web/users/create`
+   - `http://localhost:5000/web/users/update/1`
+6. Verificar workflow CI:
+   - Bobot de CI (`.github/workflows/ci.yml`) pasa con test y build.
+7. Verificar deploy:
+   - `workflow_dispatch` de `.github/workflows/deploy.yml` funciona con secrets configurados.
+
 
 ## 📌 Notas de estilo
 

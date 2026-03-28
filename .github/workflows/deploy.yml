@@ -9,15 +9,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
+    # No need to re-export VERCEL_TOKEN in env when it is provided explicitly in the action input.
+    # Keep with-block explicit to avoid secrets-scope confusion in matrix/steps.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v23
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
@@ -25,6 +24,7 @@ jobs:
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          zeit-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          vercel-args: "--prod"
